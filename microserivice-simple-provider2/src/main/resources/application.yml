@@ -1,0 +1,12 @@
+server:
+  port: 8004
+spring:
+  application:
+    name: microserivice-simple-user-provider # 应用名称
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8003/eureka
+  instance:
+    perfer-ip-address: true # true注册IP;false注册hostname
