@@ -27,13 +27,11 @@ public class UserController {
     }
 
     @HystrixCommand(fallbackMethod = "getByNetFallback", commandProperties = {
-            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "1000")})
+            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "1000"),
+    @HystrixProperty(name = "execution.isolation.strategy",value = "SEMAPHORE")})
     @RequestMapping("/{id}/net")
     public User getByNet(@PathVariable Long id) throws InterruptedException {
-        if (id == 1) {
-            throw new RuntimeException("id==1");
-        }
-        if (id == 2) {
+        if (id == 22) {
             Thread.sleep(2000);
         }
         return userNetService.get(id);

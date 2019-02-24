@@ -16,6 +16,9 @@ public class UserController {
 
     @RequestMapping("/{id}")
     public User getById(@PathVariable Long id) {
+        if(id==1){
+            throw new RuntimeException("1");
+        }
         return userService.get(id);
     }
 
